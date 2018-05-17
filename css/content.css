@@ -1,0 +1,19 @@
+.selection_bubble {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:-webkit-gradient(linear, left top, left bottom, from(#ccc), to(#ddd));
+}
+
+.suggestion_window {
+    visibility: hidden;
+    position: absolute;
+    width:200px;
+    height:300px;
+    top: 0;
+    left: 0;
+    z-index:1000;
+    word-break: break-all;
+    background: #dddddd;
+}

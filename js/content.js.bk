@@ -1,0 +1,81 @@
+// function over_input(e) {
+//     if(!e){
+//         e = window.event;
+//     }
+//     e.target.value = "test";
+// }
+//
+// function over_btn(e){
+//     if(!e){
+//         e = window.event;
+//     }
+//     e.target.innerText = "test";
+// }
+//
+// function open_new_window(e) {
+//     if(!e){
+//         e = window.event;
+//     }
+//     new_window = open("","hoverwindow","width=300,height=200,left=10,top=10");
+//     new_window.document.write("<html><title>JavaScript New Window</title>");
+//     new_window.document.write("<body bgcolor=\"#FFFFFF\">");
+//     new_window.document.write("This is a new html document created by JavaScript ");
+//     new_window.document.write("statements contained in the previous document.");
+//     new_window.document.write("<br>");
+//     new_window.document.write("</body></html>");
+//
+//     new_window.document.close();
+// }
+//
+// function close_window()
+// {
+//     new_window.close();
+// }
+let lastX = 0;
+let lastY = 0;
+
+
+function show_data(e) {
+    if(!e){
+        e = window.event;
+    }
+
+    let data = e.target.value;
+    let top = lastY + 40;
+    let left = lastX;
+
+    let new_node = document.createElement('div');
+    new_node.setAttribute('id', 'essaybot');
+    new_node.setAttribute('style', `background:#ddd;width:200px;height:300px;display:block;position:absolute;z-index:1000;top:${top}px;left:${left}px;word-break:break-all;`);
+
+    new_node.innerText = data;
+
+    let el = document.getElementById('essaybot');
+    if (!el) {
+        document.body.appendChild(new_node);
+    } else {
+        el.innerText = data;
+    }
+}
+
+function record_mouse_postion(e) {
+    if(!e){
+        e = window.event;
+    }
+
+    lastX = e.clientX;
+    lastY = e.clientY;
+}
+
+function remove() {
+    let el = document.getElementById('essaybot');
+    if (el) {
+        el.remove()
+    }
+}
+
+document.getElementById('lst-ib').onkeyup = show_data;
+document.getElementById('lst-ib').onblur = remove;
+//document.getElementById('lst-ib').onkeydown = remove;
+
+document.onmousedown = record_mouse_postion;
