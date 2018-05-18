@@ -37,7 +37,9 @@ function hide_data() {
 }
 
 $(document).mousedown(record_mouse_postion);
-$("#lst-ib").blur(hide_data).keyup(show_data);
+$("input:text").blur(hide_data).keyup(show_data);
+$("textarea").blur(hide_data).keyup(show_data);
+//$("div[g_editable='true']").keyup(show_data).blur(hide_data);
 // document.getElementById('lst-ib').onkeyup = show_data;
 // document.getElementById('lst-ib').onblur = hide_data;
 // document.onmousedown = record_mouse_postion;
